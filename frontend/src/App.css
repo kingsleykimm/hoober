@@ -1,38 +1,69 @@
-.App {
-  text-align: center;
-}
+/* Palette: https://colorhunt.co/palette/3936464f45576d5d6ef4eee0 */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: #393646;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.landing {
   display: flex;
   flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  background: #393646;
+  color: #F4EEE0;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px 50px;
+  gap: 80px;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+.header--links {
+  margin-left: auto;
+  display: flex;
+  gap: 30px;
+}
+.header--links > a {
+  color: #393646;
+  background: #F4EEE0;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+.header--links > a:hover {
+  transform: scale(1.10)
+}
+.landing--title {
+  color: #F4EEE0;
+  font-size: 85px;
+
+}
+.landing--container {
+  height: 70%;
+  display: flex;
+  margin: 40px auto;
+  padding: 150px 0;
+  flex-direction : column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
 }
 
-.App-link {
-  color: #61dafb;
-}
+.about--section {
+  color: #F4EEE0;
+  background-color:#393646;
+  padding: 20px;
+  height: 100%;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.about--description {
+  padding: 20px 60px;
+  padding-right : 200px;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: #F4EEE0
 }
