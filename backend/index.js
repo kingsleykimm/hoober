@@ -10,8 +10,9 @@ const corsOptions = {
     origin: "http://localhost:3000" // frontend URI (ReactJS)
 }
 app.use(express.json());
-// app.use(cors(corsOptions));
+
 app.use("/users", users)
+
 app.get("/", (req, res) => {
     res.status(201).json({message: "Connected to Backend!"});
 });

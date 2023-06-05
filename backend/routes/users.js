@@ -1,6 +1,7 @@
 const express = require("express")
 var router = express.Router()
 var db = require("../db_models/db")
+var bodyParser = require('body-parser')
 
 router.get('/', (req, res, next) => {
     var sql = "select * from users"
@@ -15,6 +16,18 @@ router.get('/', (req, res, next) => {
             "data" : rows
         })
     })
+
+})
+
+router.get('/add', (req, res, next) => {
+    res.send("Got to add")
+
+})
+
+router.use(bodyParser.json())
+
+router.post ('/', (req, res) => {
+    console.log(req.body)
 
 })
 

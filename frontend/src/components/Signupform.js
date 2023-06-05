@@ -1,16 +1,35 @@
-import React from "react"
-import {Form, useForm} from "react-hook-form"
+import React, {useState} from "react"
+import {useForm} from "react-hook-form"
 function Signupform () {
-    const {register, handleSubmit, watch } = useForm();
+    const {register, handleSubmit, watch} = useForm();
+    const [data, setData] = useState("");
 
 
     return (
 
-        <Form>
-            <label>Username: </label><input {...register("username", {required : true})}></input>
-            <input {...register("password", {required: true})}></input>
-            <input {...register("confirmPassword", {required : true})}/>
-        </Form>
+        <form
+        // action="/localhost:4000"
+        onSubmit= {handleSubmit(async (data) => {
+            console.log(JSON.stringify(data))
+            const requestOptions = {
+                method: "POST",
+
+                mode: "no-cors",
+                headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            }
+            const response = await fetch("http://localhost:4000/users/", requestOptions)
+            console.log(response)
+        })}
+        >
+            <input 
+            placeholder="Username" 
+            {...register("username", {required : true})}></input>
+            <input placeholder="Password" {...register("password", {required: true})}></input>
+            <input placeholder="Confirm Password" {...register("confirmPassword", {required : true})}></input>
+            <input value="Sign Up" type="submit"></input>
+
+        </form>
     )
 
 }

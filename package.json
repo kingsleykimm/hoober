@@ -6,11 +6,15 @@
   "scripts": {
     "install-server": "cd backend && npm install",
     "start-server": "cd backend && node index.js",
+    "start-dev-server": "cd backend && nodemon index.js",
     "install-client": "cd frontend && npm install",
     "build-client": "cd frontend && npm run build",
     "start-client": "cd frontend && npm run start"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.22"
+  }
 }
