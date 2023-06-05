@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useState} from "react"
 import { useForm } from "react-hook-form"
 import {yupResolver} from "@hookform/resolvers/yup"
 import * as Yup from 'yup'
@@ -14,7 +14,7 @@ function Signupform() {
     const formOptions = {resolver: yupResolver(formSchema)}
     const { register, handleSubmit, formState } = useForm(formOptions);
     const {errors} = formState
-
+    const [userExists, setUserExists] = useState(false)
 
 
     const onSubmit = async (data) => {
@@ -24,10 +24,15 @@ function Signupform() {
             body: JSON.stringify(data)
         }
         const response = await fetch("http://localhost:4000/users", requestOptions)
+        console.log(response)
         try {
             const responseData = await response.json()
-            console.log(responseData)
-            return responseData
+            if (responseData["userExists"]) {
+                setUserExists(true)
+            }
+            else
+                setUserExists(false);
+
         }
         catch (error) { console.log("Error: " + error) }
     }
@@ -47,7 +52,7 @@ function Signupform() {
                             "alignSelf": "center"
                         }
                     }
-                >Sign Up</h1>
+                >Welcome!</h1>
                 <label className="form--label">Username</label>
                 <input
                     placeholder="Username"
@@ -72,6 +77,12 @@ function Signupform() {
                 <div className="form--label">{errors.confirmPassword?.message}</div>
                 <input value="Sign Up" type="submit"
                 ></input>
+                {userExists && <p className="form--label" style = {
+                    {
+                        "textAlign": "center",
+                        "marginBottom": "0px"
+                    }
+                    }>User already exists in our database</p>}
                 
             </form>
         </div>

@@ -1,7 +1,20 @@
 const express = require("express")
 var router = express.Router()
-var db = require("../db_models/db")
-var bodyParser = require('body-parser')
+var db_model = require("../db")
+
+const db = db_model.database
+
+router.post ('/', async (req, res) => {
+    //username, password, confirmPassword
+    try {
+        var c = await db_model.addUser(req.body)
+        res.json({userExists: false})
+    }
+    catch {
+        res.json({userExists: true})
+    }
+
+})
 
 router.get('/', (req, res, next) => {
     var sql = "select * from users"
@@ -19,17 +32,8 @@ router.get('/', (req, res, next) => {
 
 })
 
-router.get('/add', (req, res, next) => {
-    res.send("Got to add")
 
-})
 
-router.use(bodyParser.json())
-
-router.post ('/', (req, res) => {
-    console.log(req.body)
-
-})
 
 
 module.exports = router;
