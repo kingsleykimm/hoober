@@ -32,7 +32,7 @@ function App() {
         <Route path="/Signupform" element={<Signupform />}>
 
         </Route>
-        <Route paht="/Loginform" element={<Loginform />}>
+        <Route path="/Loginform" element={<Loginform />}>
 
         </Route>
       </Routes>

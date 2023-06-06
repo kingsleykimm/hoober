@@ -20,11 +20,11 @@ function Signupform() {
     const onSubmit = async (data) => {
         const requestOptions = {
             method: "POST",
+            mode: "cors",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         }
         const response = await fetch("http://localhost:4000/users", requestOptions)
-        console.log(response)
         try {
             const responseData = await response.json()
             if (responseData["userExists"]) {
