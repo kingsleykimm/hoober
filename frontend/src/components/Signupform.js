@@ -2,8 +2,12 @@ import React, { useState} from "react"
 import { useForm } from "react-hook-form"
 import {yupResolver} from "@hookform/resolvers/yup"
 import * as Yup from 'yup'
-function Signupform() {
+import { Navigate } from "react-router-dom";
+import Navbar from "./Navbar";
+function Signupform(props) {
     const formSchema = Yup.object().shape({
+        username: Yup.string()
+           .required("Username is required"),
         password: Yup.string()
           .required('Password is required')
           .min(6, 'Password must be at 6 characters long'),
@@ -12,11 +16,10 @@ function Signupform() {
           .oneOf([Yup.ref('password')], 'Passwords do not match'),
       })
     const formOptions = {resolver: yupResolver(formSchema)}
-    const { register, handleSubmit, formState } = useForm(formOptions);
+    const { register, handleSubmit, reset, formState } = useForm(formOptions);
     const {errors} = formState
     const [userExists, setUserExists] = useState(false)
-
-
+    const [user, setUser] = useState(null)
     const onSubmit = async (data) => {
         const requestOptions = {
             method: "POST",
@@ -29,9 +32,16 @@ function Signupform() {
             const responseData = await response.json()
             if (responseData["userExists"]) {
                 setUserExists(true)
+                reset()
             }
-            else
+            else {
                 setUserExists(false);
+                setUser(data)
+                localStorage.setItem("curUser", data)
+                localStorage.setItem("authenticated", true)
+                props.setUserRender(prevRender => !prevRender)
+            }
+               
 
         }
         catch (error) { console.log("Error: " + error) }
@@ -39,7 +49,9 @@ function Signupform() {
 
     return (
         <div className="form--wrapper">
-
+             {
+                user && <Navigate to="/userprofile" replace = {true} />
+            }
             <form className="user--form"
                 // action="/localhost:4000"
                 onSubmit={handleSubmit(onSubmit)}
@@ -59,6 +71,7 @@ function Signupform() {
                     name="username"
                     {...register("username")}                    
                 />
+                <div className="form--errors"> {errors.username?.message}</div>
                 <label className="form--label">Password</label>
                 <input
                     name="password"
@@ -66,7 +79,7 @@ function Signupform() {
                     placeholder="Password"
                     {...register("password")}
                    ></input>
-                <div className="form--label"> {errors.password?.message}</div>
+                <div className="form--errors"> {errors.password?.message}</div>
                 <label className="form--label">Confirm Password</label>
                 <input style={{ 'marginBottom': "20px" }}
                     placeholder="Confirm Password"
@@ -74,7 +87,7 @@ function Signupform() {
                     type="password"
                     {...register("confirmPassword")}
                 ></input>
-                <div className="form--label">{errors.confirmPassword?.message}</div>
+                <div className="form--errors">{errors.confirmPassword?.message}</div>
                 <input value="Sign Up" type="submit"
                 ></input>
                 {userExists && <p className="form--label" style = {

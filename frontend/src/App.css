@@ -1,7 +1,7 @@
 /* Palette: https://colorhunt.co/palette/3936464f45576d5d6ef4eee0 */
 
 body {
-  background: #393646;
+  background: #00111c;
 }
 .landing {
   display: flex;
@@ -11,7 +11,7 @@ body {
 .header {
   display: flex;
   flex-direction: row;
-  background: #393646;
+  background: #001a2c;
   color: #F4EEE0;
   justify-content: space-evenly;
   align-items: center;
@@ -24,7 +24,9 @@ body {
 .header--links {
   margin-left: auto;
   display: flex;
+  align-items: center;
   gap: 30px;
+
 }
 .header--links > a {
   color: #393646;
@@ -55,7 +57,7 @@ body {
 
 .about--section {
   color: #F4EEE0;
-  background-color:#393646;
+
   padding: 20px;
   height: 100%;
 
@@ -108,7 +110,49 @@ body {
 .form--label {
   font-size: 22px;
   color: #F4EEE0;
+}
+.form--errors {
+  font-size: 16px;
+  color: #EEF1BD;
+  margin-bottom: 10px;
+}
 
+.dropdown--content {
+  display: none;
+  position : absolute;
+  background-color:#EEF1BD;
+  z-index: 1;
+}
 
+.dropdown--content > a {
+  background: #EEF1BD;
+  color:#393646;
+  padding: 10px;
+  border-radius: 40px;
+  text-decoration: none;
+  display: block;
+}
 
+.user--dropdown:hover .dropdown--content {
+  display: block;
+}
+
+.home-button-style {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+}
+.home-button-style > a, img {
+  color : #F4EEE0;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.username {
+  text-align: center;
+  background: #F4EEE0;
+  color:#393646;
+  padding: 10px;
+  border-radius: 10px;
 }
