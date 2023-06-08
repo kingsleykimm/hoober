@@ -1,7 +1,10 @@
-/* Palette: https://colorhunt.co/palette/3936464f45576d5d6ef4eee0 */
+/* Palette: https://coolors.co/palette/00111c-001523-001a2c-002137-00253e-002945-002e4e-003356-003a61-00406c */
+
 
 body {
   background: #00111c;
+  height: 100vh;
+  width: 100vw
 }
 .landing {
   display: flex;

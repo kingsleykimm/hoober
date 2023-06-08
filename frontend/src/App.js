@@ -1,5 +1,6 @@
 // import { useEffect, useState } from "react";
 import "./App.css"
+import "./components/dashboard.css"
 import Navbar  from "./components/Navbar.js"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
@@ -9,6 +10,8 @@ import Requests from "./components/Requests"
 import Profile from "./components/Profile"
 import Loginform from "./components/Loginform";
 import Signupform from "./components/SignUpForm";
+import './components/dialog-styles.css';
+import './components/tab-styles.css'
 function App() {
   const [userRender, setUserRender] = useState(false)
   // const element = <Home />

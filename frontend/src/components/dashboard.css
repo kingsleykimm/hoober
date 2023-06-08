@@ -1,4 +1,117 @@
+.dashboard {
+    margin: 60px auto;
+    box-sizing: border-box;
+    height: 70vh;
+    width: 80vw;
+    padding: 30px 45px;
+    border-radius: 12px;
+    background: #00111c;
+    box-shadow: -6px 6px 12px #000a11,
+        6px -6px 12px #001827;
+}
 
 .profile--title {
-    color: #F4EEE0;
+    box-sizing: border-box;
+    color: #393646;
+    display:inline-block;
+    padding: 20px;
+    box-shadow:  -5px 5px 10px #cecece;
+    background: #F4EEE0;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 40px;
+    border-radius: 25px;
+
+}
+
+.profile--info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 75px;
+}
+
+.riderequests {
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+
+.card {
+    width: 230px;
+    height: auto;
+    background: #002137;
+    border-radius: 15px;
+    box-shadow: 1px 5px 60px 0px #100a886b;
+    padding-bottom: 20px;
+}
+
+.card .card-border-top {
+    width: 60%;
+    height: 3%;
+    background: #6b64f3;
+    margin: auto;
+    border-radius: 0px 0px 15px 15px;
+}
+.card .profile--buttons {
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+}
+
+.card span {
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    display: block;
+    padding-top: 10px;
+    font-size: 20px;
+
+}
+
+.card .job {
+    font-weight: 400;
+    color: white;
+    display: block;
+    text-align: center;
+    padding-top: 3px;
+    font-size: 12px;
+}
+
+.card .img {
+    width: 70px;
+    height: 80px;
+    display: flex;
+    background: #6b64f3;
+    border-radius: 15px;
+    margin: auto;
+    padding: 10px;
+    justify-content: center;
+
+    margin-top: 25px;
+}
+
+.card button {
+    padding: 8px 25px;
+    display: block;
+    margin: auto;
+    border-radius: 8px;
+    border: none;
+
+    background: #6b64f3;
+    color: white;
+    font-weight: 600;
+}
+
+.card button:hover {
+    background: #534bf3;
+}
+
+.user--rides, .user--requests {
+
 }
