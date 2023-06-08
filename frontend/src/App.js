@@ -14,8 +14,9 @@ function App() {
   // const element = <Home />
   // const HomeRoutes = () => {
   //   useRoutes (['/home', '/'].map(path => ({path, element})))
-  
+
   return (
+    
     <BrowserRouter>
       <Navbar
       userRender = {userRender}

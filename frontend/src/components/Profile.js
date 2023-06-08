@@ -1,9 +1,9 @@
 
-
+import "./dashboard.css"
 function Profile () {
     return (
-        <h1>
-            THIS IS THE PROFILE
+        <h1 className="profile--title">
+            My Profile
         </h1>
     )
 }

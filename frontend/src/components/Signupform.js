@@ -37,7 +37,7 @@ function Signupform(props) {
             else {
                 setUserExists(false);
                 setUser(data)
-                localStorage.setItem("curUser", data)
+                localStorage.setItem("curUser", JSON.stringify(data))
                 localStorage.setItem("authenticated", true)
                 props.setUserRender(prevRender => !prevRender)
             }
