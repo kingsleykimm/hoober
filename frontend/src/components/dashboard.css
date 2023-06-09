@@ -1,5 +1,5 @@
 .dashboard {
-    margin: 60px auto;
+    margin: 80px auto;
     box-sizing: border-box;
     height: 70vh;
     width: 80vw;
@@ -26,7 +26,7 @@
 
 .profile--info {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
     gap: 75px;
 }
@@ -41,11 +41,12 @@
 
 
 .card {
-    width: 230px;
+    width: 250px;
     height: auto;
     background: #002137;
     border-radius: 15px;
     box-shadow: 1px 5px 60px 0px #100a886b;
+    padding: 0 20px;
     padding-bottom: 20px;
 }
 
@@ -112,6 +113,7 @@
     background: #534bf3;
 }
 
-.user--rides, .user--requests {
-
+.user--rides .card, .user--requests .card {
+    width: auto;
+    padding: 5px 30px;
 }

@@ -1,9 +1,14 @@
 import * as Dialog from "@radix-ui/react-dialog";
+import {useForm} from "react-hook-form"
 import DialogDemo from "./DialogDemo";
 import { Cross2Icon } from '@radix-ui/react-icons';
+import RideForm from "./RideForm.jsx"
+import RequestForm from "./RequestForm";
 function Profile() {
     let user = JSON.parse(localStorage.getItem("curUser"))
-    console.log(user)
+    const {register, handleSubmit, reset, formState} = useForm();
+
+
     return (
         <div className="dashboard">
             <h1 className="profile--title">
@@ -103,20 +108,23 @@ function Profile() {
 
                     </div>
                 </div>
-                <div className="riderequests">
+
                     <div className="user--rides">
                         <div className="card">
-                            <span>Your Ride Offers</span>
+                            <span style={{"fontSize": "36px"}}>Your Ride Offers</span>
+                            <div className="rides">
+
+                            </div>
+                            <RideForm />
                         </div>
                     </div>
                     <div className="user--requests">
                         <div className="card">
-                            <span>Your Ride Requests
-
-                            </span>
+                            <span style={{"fontSize": "36px"}}>Your Ride Requests</span>
+                            <RequestForm />
                         </div>
                     </div>
-                </div>
+
 
 
             </div>

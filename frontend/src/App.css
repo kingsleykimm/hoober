@@ -36,6 +36,7 @@ body {
   color: #393646;
   background: #F4EEE0;
   padding: 10px;
+  font-size: 30px;
   border-radius: 10px;
   text-decoration: none;
   transition: transform 0.2s;
@@ -133,6 +134,7 @@ body {
   color:#393646;
   padding: 10px;
   border-radius: 40px;
+
   text-decoration: none;
   display: block;
 }
@@ -159,4 +161,29 @@ body {
   color:#393646;
   padding: 10px;
   border-radius: 10px;
+  font-size: 30px;
+}
+
+.rides--page {
+  border-radius: 12px;
+  width: 90vw;
+  height: auto;
+  box-sizing: border-box;
+  display: block;
+  margin: 40px auto;
+  background: #002945;
+  box-shadow: -6px 6px 12px #000a11,
+      6px -6px 12px #001827;
+  padding: 10px 25px;
+}
+.rides--page h1 {
+  color: #F4EEE0;
+  font-size: 45px;
+  box-sizing: border-box;
+
+}
+.rides--heading {
+  display: flex;
+  align-items: center;
+
 }

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import {yupResolver} from "@hookform/resolvers/yup"
 import * as Yup from 'yup'
 import { Navigate } from "react-router-dom";
-import Navbar from "./Navbar";
+
 function Signupform(props) {
     const formSchema = Yup.object().shape({
         username: Yup.string()

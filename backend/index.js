@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const users = require("./routes/users")
+const rides = require("./routes/rides")
+const requests = require("./routes/requests")
 require("dotenv").config();
 const PORT = process.env.PORT
 // middleware
@@ -19,6 +21,8 @@ app.use(function(req, res, next) {
 app.use(express.json());
 
 app.use("/users", users)
+app.use('/rides', rides)
+app.use('/requests', requests)
 
 app.get("/", (req, res) => {
     res.status(201).json({message: "Connected to Backend!"});

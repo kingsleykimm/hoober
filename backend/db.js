@@ -75,6 +75,37 @@ exports.addUser = (user) => {
     )})
 }
 
+exports.addRide = (ride) => {
+    return new Promise ((resolve, reject) => {
+
+        const statement = `INSERT INTO rides (user, riders, splitgas, destination, departuredate, description,
+                                departurelocation) VALUES (?, ?, ?, ?, ?, ?, ?)`
+        const params  = [ride.user.username, ride.passengers, ride.splitgas, ride.destination, ride.departureDate, ride.description, ride.departureLocation]
+        db.run(statement, params, (err) => {
+            if(err) {
+                console.log(err)
+                reject(false)
+            }
+            else {resolve(true)}
+        })
+    })
+}
+exports.addRequest = (request) => {
+    return new Promise ((resolve, reject) => {
+        console.log(request)
+        const statement = `INSERT INTO requests (user, splitgas, destination, departuredate, description
+                                ) VALUES (?, ?, ?, ?, ?)`
+        const params  = [request.user.username, request.splitgas, request.destination, request.departureDate, request.description]
+        db.run(statement, params, (err) => {
+            if(err) {
+                console.log(err)
+                reject(false)
+            }
+            else {resolve(true)}
+        })
+    })
+}
+
 exports.reset = () => {
     db.run('DROP TABLE users', (err) => console.log(err))
     db.run('DROP TABLE REQUESTS', (err) => console.log(err))
