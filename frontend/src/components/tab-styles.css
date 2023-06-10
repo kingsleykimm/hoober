@@ -90,7 +90,9 @@ input {
   color: var(--violet12);
   display: block;
 }
-
+.Label.errorLabel {
+  color: red;
+}
 .Input {
   flex: 1 0 auto;
   border-radius: 4px;

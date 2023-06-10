@@ -34,7 +34,7 @@ body {
 }
 .header--links > a {
   color: #393646;
-  background: #F4EEE0;
+  color: #F4EEE0;
   padding: 10px;
   font-size: 30px;
   border-radius: 10px;
@@ -130,8 +130,9 @@ body {
 }
 
 .dropdown--content > a {
-  background: #EEF1BD;
   color:#393646;
+  background: #EEF1BD;
+  margin-bottom: 5px;
   padding: 10px;
   border-radius: 40px;
 
@@ -157,8 +158,9 @@ body {
 
 .username {
   text-align: center;
-  background: #F4EEE0;
   color:#393646;
+  color: #F4EEE0;
+  
   padding: 10px;
   border-radius: 10px;
   font-size: 30px;
@@ -185,5 +187,5 @@ body {
 .rides--heading {
   display: flex;
   align-items: center;
-
+  justify-content: space-between;
 }

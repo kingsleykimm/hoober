@@ -64,7 +64,7 @@ function RequestForm() {
                             </select>
 
                         </fieldset>
-                        <label className="Label">{errors.splitgas?.message}</label>
+                        <label className="Label errorLabel">{errors.splitgas?.message}</label>
                         <fieldset className="Fieldset">
                             <label className="Label">Destination</label>
                             <input className="Input"
@@ -74,7 +74,7 @@ function RequestForm() {
                             {...register("destination")} 
                             ></input>
                         </fieldset>
-                        <label className="Label">{errors.destination?.message}</label>
+                        <label className="Label errorLabel">{errors.destination?.message}</label>
                         <fieldset className="Fieldset">
                             <label className="Label" >Departure Date</label>
                             <input className="Input" type="date"
@@ -82,7 +82,7 @@ function RequestForm() {
                             {...register("departureDate")}
                             ></input>
                         </fieldset>
-                        <label className="Label">{errors.departureDate?.message}</label>
+                        <label className="Label errorLabel">{errors.departureDate && "Please provide a departure date"}</label>
                        
                         <fieldset className="Fieldset">
                             <label className="Label">Description (optional)</label>

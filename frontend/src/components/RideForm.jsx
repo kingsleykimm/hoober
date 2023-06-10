@@ -65,7 +65,7 @@ function RideForm() {
                             placeholder="0"
                             {...register("passengers")} />
                         </fieldset>
-                        <label className="Label">{errors.passengers?.message}</label>
+                        <label className="Label errorLabel">{errors.passengers && "Please provide a number of passengers"}</label>
                         <fieldset className="Fieldset">
                             <label className="Label">
                                 Split Gas?
@@ -79,7 +79,7 @@ function RideForm() {
                             </select>
 
                         </fieldset>
-                        <label className="Label">{errors.splitgas?.message}</label>
+                        <label className="Label errorLabel">{errors.splitgas?.message}</label>
                         <fieldset className="Fieldset">
                             <label className="Label">Destination</label>
                             <input className="Input"
@@ -89,7 +89,7 @@ function RideForm() {
                             {...register("destination")} 
                             ></input>
                         </fieldset>
-                        <label className="Label">{errors.destination?.message}</label>
+                        <label className="Label errorLabel">{errors.destination?.message}</label>
                         <fieldset className="Fieldset">
                             <label className="Label" >Departure Date</label>
                             <input className="Input" type="date"
@@ -97,7 +97,7 @@ function RideForm() {
                             {...register("departureDate")}
                             ></input>
                         </fieldset>
-                        <label className="Label">{errors.departureDate?.message}</label>
+                        <label className="Label errorLabel">{errors.departureDate && "Please provide a departure date"}</label>
                         <fieldset className="Fieldset">
                             <label className="Label">Departure Location</label>
                             <input className="Input"
@@ -106,7 +106,7 @@ function RideForm() {
                             {...register("departureLocation")} 
                             ></input>
                         </fieldset>
-                        <label className="Label">{errors.departureLocation?.message}</label>
+                        <label className="Label errorLabel">{errors.departureLocation?.message}</label>
                         <fieldset className="Fieldset">
                             <label className="Label">Description (optional)</label>
                             <input className="Input"

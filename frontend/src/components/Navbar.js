@@ -10,8 +10,10 @@ function Navbar(props) {
     const auth = localStorage.getItem("authenticated")
     const [authState, setAuthState] = useState(auth)
     let user = "";
-    if (auth.length > 0)
-        user = JSON.parse(localStorage.getItem("curUser"))
+    if (auth != null) 
+        if(auth.length > 0)
+            user = JSON.parse(localStorage.getItem("curUser"))
+
     return (
         <nav className="header">
             <div className="home-button-style">
