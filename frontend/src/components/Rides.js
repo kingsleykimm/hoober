@@ -126,9 +126,10 @@ function Rides() {
                                     margin: 0,
                                 }}
                             >
-                                {record["DESCRIPTION"]}
+                                Description: {record["DESCRIPTION"]}
                             </p>
-                        )
+                        ),
+                        rowExpandable: (record) => record["DESCRIPTION"]
                     }
                     }
                  />

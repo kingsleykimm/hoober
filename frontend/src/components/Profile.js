@@ -1,26 +1,38 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { useForm } from "react-hook-form"
+import { useState, useCallback, useEffect } from "react"
 import DialogDemo from "./DialogDemo";
 import { Cross2Icon } from '@radix-ui/react-icons';
 import RideForm from "./RideForm.jsx"
 import RequestForm from "./RequestForm";
 function Profile() {
+    const [rideData, setRideData] = useState()
     let user = JSON.parse(localStorage.getItem("curUser"))
-    async function getUserRides() {
+    const getUserRides = useCallback(async () => {
         const url = "http://localhost:4000/rides/u?" + new URLSearchParams({ user: user.username }).toString()
         console.log(url)
         const requestOptions = {
             method: "GET",
             mode: "cors",
         }
-        try {
-            const response = await fetch(url, requestOptions)
-            const responseData = await response.json()
-            console.log(responseData)
-        }
-        catch (error) { console.log(error) }
+
+        const response = await fetch(url, requestOptions)
+        const responseData = await response.json()
+
+        setRideData(responseData.data)
+
+    }, [])
+
+    useEffect(() => {
+        getUserRides().catch(console.error)
+    }, [getUserRides])
+
+    const deleteRide = (ind) => {
+
+        setRideData((prevData) => {
+            prevData.filter((item, index) => index != ind)
+        })
+
     }
-    getUserRides()
 
     return (
         <div className="dashboard">
@@ -123,19 +135,34 @@ function Profile() {
                 </div>
                 <div className="riderequests">
 
-                        <div className="card ride">
-                            <span style={{ "fontSize": "28px", "marginBottom": "10px" }}>Your Ride Offers</span>
-                            <div className="rides">
-
-                            </div>
+                    <div className="ride--card">
+                        <div className="ride header">
+                            <span style={{ "fontSize": "28px", "marginBottom": "10px" }}>My Ride Offers</span>
                             <RideForm />
                         </div>
+                        {
+                            rideData && rideData.map((item, i) => {
+                                return <div className="ride--item" key={i}>
+                                    Ride to {item.DESTINATION}
+                                    <div className="ride--buttons">
+                                        <RideForm  isEdit = {true}/>
+
+                                        <button className="Button red" style={{"marginLeft": "10px"}}>Delete</button>
+                                    </div>
+
+                                </div>
+                            })
+                        }
+                    </div>
 
 
-                        <div className="card request">
-                            <span style={{ "fontSize": "28px", "marginBottom": "10px" }}>Your Ride Requests</span>
+                    <div className="request--card">
+                        <div className="request header">
+                            <span style={{ "fontSize": "28px", "marginBottom": "10px" }}>My Ride Requests</span>
                             <RequestForm />
                         </div>
+
+                    </div>
 
                 </div>
 

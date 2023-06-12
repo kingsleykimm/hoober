@@ -174,7 +174,7 @@ body {
   transform: scale(1.10);
 }
 
-.rides--page {
+.rides--page, .requests--page {
   width: 90vw;
   height: auto;
   box-sizing: border-box;
@@ -186,13 +186,13 @@ body {
         6px -6px 12px #001827;
   padding: 10px 25px;
 }
-.rides--page h1 {
+.rides--page h1, .requests--page h1 {
   color: #F4EEE0;
   font-size: 45px;
   box-sizing: border-box;
 
 }
-.rides--heading {
+.rides--heading, .requests--heading{
   display: flex;
   align-items: center;
   justify-content: space-between;

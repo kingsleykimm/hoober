@@ -33,7 +33,7 @@
 
 .riderequests {
     display: flex;
-    height: 100%;
+    /* height: 100%; */
     flex-direction: column;
     justify-content: flex-end;
     gap: 20px;
@@ -113,12 +113,38 @@
 .card button:hover {
     background: #534bf3;
 }
-
-
-
-.card.ride, .card.request {
+.ride--card, .request--card {
     width: auto;
-    padding: 5px 30px;
+    background: #002137;
+    border-radius: 15px;
+    box-shadow: 1px 5px 60px 0px #100a886b;
+    box-sizing: border-box;
     display: flex;
-    gap: 50px;
+    flex-direction: column;
+    gap: 10px;
 }
+
+
+.ride.header, .request.header{
+    box-sizing: border-box;
+    background-color: #002137;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+
+}
+
+.ride--item, .request--item {
+    background: #003A61;
+    padding: 7px 16px;
+    border-radius: 10px;
+
+    font-size: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+}
+

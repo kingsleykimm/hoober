@@ -4,7 +4,7 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import {yupResolver} from "@hookform/resolvers/yup"
 import * as Yup from 'yup'
 import {useState} from "react"
-function RideForm() {
+function RideForm(props) {
     const formSchema = Yup.object().shape({
         passengers: Yup.number()
         .required('Number of passengers is required'),
@@ -44,13 +44,18 @@ function RideForm() {
     return (
 
         <Dialog.Root open = {open} onOpenChange={setOpen}>
-            <Dialog.Trigger asChild>
-                <button className="Button violet">Add Ride</button>
-            </Dialog.Trigger>
+            {
+                props.isEdit ? <Dialog.Trigger asChild>
+                    <button className="Button green">Edit Ride</button>
+                </Dialog.Trigger> :
+                <Dialog.Trigger asChild>
+                    <button className="Button violet">Add Ride</button>
+                </Dialog.Trigger>
+            }
             <Dialog.Portal>
                 <Dialog.Overlay className="DialogOverlay">
                     <Dialog.Content className="DialogContent">
-                        <Dialog.Title className="DialogTitle">Add Ride</Dialog.Title>
+                        <Dialog.Title className="DialogTitle">{props.isEdit ? "Edit Ride" : "Add Ride"}</Dialog.Title>
                         <Dialog.Description className="DialogDescription">
                             Post a Ride Offer
                         </Dialog.Description>
