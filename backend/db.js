@@ -17,6 +17,18 @@ exports.getTable = (db_name, callback) => {
 
 
 }
+exports.getUserRides = (user, callback) => {
+
+    const statement = `select * from rides where USER = '` + user + `'`;
+    const params = []
+    db.all(statement, params, (err, rows) => {
+        if (err) {
+            console.log(err)
+        }
+        else {callback(rows)}
+    })
+
+}
 
 exports.createTables = () => {
 
@@ -57,6 +69,16 @@ exports.createTables = () => {
         )`, (err) => {
             if (err) { }
         })
+
+        db.run(`CREATE TABLE junctions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            USER VARCHAR(255) NOT NULL,
+            RIDEID INTEGER,
+            REQUESTID INTEGER
+            FOREIGN KEY (USER) REFERENCES users(name),
+            FOREIGN KEY (RIDEID) REFERENCES rides(id),
+            FOREIGN KEY (REQUESTID) REFERENCES request(id)
+        )`)
 }
 
 
@@ -106,9 +128,12 @@ exports.addRequest = (request) => {
     })
 }
 
+
+
 exports.reset = () => {
     db.run('DROP TABLE users', (err) => console.log(err))
     db.run('DROP TABLE REQUESTS', (err) => console.log(err))
     db.run("DROP TABLE RIDES", (err) => console.log(err))
 }
+
 exports.database = db

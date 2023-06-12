@@ -84,10 +84,10 @@ input {
 }
 
 .Label {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1;
   margin-bottom: 10px;
-  color: var(--violet12);
+  color: white;
   display: block;
 }
 .Label.errorLabel {

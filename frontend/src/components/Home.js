@@ -8,7 +8,9 @@ function Home() {
                     Hoober
                 </h1>
                 <h3 style={{ fontSize: "30px", color: "#F4EEE0" }}>
-                    <em>UVA Carpooling App</em>
+                    <em>Need a ride?
+                        
+                    </em>
                 </h3>
             </div>
             <div className="about--section">

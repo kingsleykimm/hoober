@@ -1,13 +1,26 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import {useForm} from "react-hook-form"
+import { useForm } from "react-hook-form"
 import DialogDemo from "./DialogDemo";
 import { Cross2Icon } from '@radix-ui/react-icons';
 import RideForm from "./RideForm.jsx"
 import RequestForm from "./RequestForm";
 function Profile() {
     let user = JSON.parse(localStorage.getItem("curUser"))
-    const {register, handleSubmit, reset, formState} = useForm();
-
+    async function getUserRides() {
+        const url = "http://localhost:4000/rides/u?" + new URLSearchParams({ user: user.username }).toString()
+        console.log(url)
+        const requestOptions = {
+            method: "GET",
+            mode: "cors",
+        }
+        try {
+            const response = await fetch(url, requestOptions)
+            const responseData = await response.json()
+            console.log(responseData)
+        }
+        catch (error) { console.log(error) }
+    }
+    getUserRides()
 
     return (
         <div className="dashboard">
@@ -108,22 +121,25 @@ function Profile() {
 
                     </div>
                 </div>
+                <div className="riderequests">
 
-                    <div className="user--rides">
-                        <div className="card">
-                            <span style={{"fontSize": "36px"}}>Your Ride Offers</span>
+                        <div className="card ride">
+                            <span style={{ "fontSize": "28px", "marginBottom": "10px" }}>Your Ride Offers</span>
                             <div className="rides">
 
                             </div>
                             <RideForm />
                         </div>
-                    </div>
-                    <div className="user--requests">
-                        <div className="card">
-                            <span style={{"fontSize": "36px"}}>Your Ride Requests</span>
+
+
+                        <div className="card request">
+                            <span style={{ "fontSize": "28px", "marginBottom": "10px" }}>Your Ride Requests</span>
                             <RequestForm />
                         </div>
-                    </div>
+
+                </div>
+
+
 
 
 

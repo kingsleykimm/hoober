@@ -26,16 +26,17 @@
 
 .profile--info {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     gap: 75px;
 }
 
 .riderequests {
     display: flex;
-    height: auto;
+    height: 100%;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 20px;
 
 }
 
@@ -113,7 +114,11 @@
     background: #534bf3;
 }
 
-.user--rides .card, .user--requests .card {
+
+
+.card.ride, .card.request {
     width: auto;
     padding: 5px 30px;
+    display: flex;
+    gap: 50px;
 }

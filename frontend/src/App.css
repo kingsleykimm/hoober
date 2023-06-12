@@ -44,6 +44,10 @@ body {
 .header--links > a:hover {
   transform: scale(1.10)
 }
+.header--links > a.active {
+  text-decoration: underline #F4EEE0;
+}
+
 .landing--title {
   color: #F4EEE0;
   font-size: 85px;
@@ -106,7 +110,7 @@ body {
   padding: 10px 15px;
   font-size: 18px;
   border-radius: 6px;
-
+  color: white;
 
 }
 
@@ -164,18 +168,22 @@ body {
   padding: 10px;
   border-radius: 10px;
   font-size: 30px;
+  transition: transform 0.2s;
+}
+.username:hover {
+  transform: scale(1.10);
 }
 
 .rides--page {
-  border-radius: 12px;
   width: 90vw;
   height: auto;
   box-sizing: border-box;
   display: block;
   margin: 40px auto;
-  background: #002945;
-  box-shadow: -6px 6px 12px #000a11,
-      6px -6px 12px #001827;
+  border-radius: 12px;
+    background: #002945;
+    box-shadow: -6px 6px 12px #000a11,
+        6px -6px 12px #001827;
   padding: 10px 25px;
 }
 .rides--page h1 {

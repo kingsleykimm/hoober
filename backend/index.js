@@ -5,6 +5,7 @@ const cors = require("cors");
 const users = require("./routes/users")
 const rides = require("./routes/rides")
 const requests = require("./routes/requests")
+const junctions = require('./routes/junction')
 require("dotenv").config();
 const PORT = process.env.PORT
 // middleware
@@ -23,7 +24,7 @@ app.use(express.json());
 app.use("/users", users)
 app.use('/rides', rides)
 app.use('/requests', requests)
-
+app.use('/junction', junctions)
 app.get("/", (req, res) => {
     res.status(201).json({message: "Connected to Backend!"});
 });

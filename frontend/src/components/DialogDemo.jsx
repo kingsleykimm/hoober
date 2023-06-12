@@ -6,8 +6,7 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import * as Tabs from "@radix-ui/react-tabs"
 
 function DialogDemo() {
-    const [newUsername, setNewUsername] = useState("")
-    const [newPassword, setNewPassword] = useState("")
+
     return (
         <Dialog.Root>
         <Dialog.Trigger asChild>
