@@ -23,4 +23,13 @@ router.get('/', (req, res, next) => { //gets all the rides in the database
     })
 })
 
+router.get('/u', async (req, res, ) => {
+    db_model.getUserRequests(req.query.user, (rows) => {
+        res.json({
+            data: rows,
+        })
+    })
+
+})
+
 module.exports = router

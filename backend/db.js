@@ -29,6 +29,18 @@ exports.getUserRides = (user, callback) => {
     })
 
 }
+exports.getUserRequests = (user, callback) => {
+
+    const statement = `select * from requests where USER = '` + user + `'`;
+    const params = []
+    db.all(statement, params, (err, rows) => {
+        if (err) {
+            console.log(err)
+        }
+        else {callback(rows)}
+    })
+
+}
 
 exports.createTables = () => {
 
@@ -128,6 +140,18 @@ exports.addRequest = (request) => {
     })
 }
 
+exports.updateRide = (ride) => {
+    return new Promise ((resolve, reject) => {
+        const statement = `UPDATE rides SET RIDERS = ?, SPLITGAS = ?, DESTINATION = ?, DEPARTUREDATE = ?, DESCRIPTION = ?, DEPARTURELOCATION = ? WHERE ID = ? AND USER = ?`
+        const params = [ride.passengers, ride.splitgas, ride.destination, ride.departureDate, ride.description, ride.departureLocation, ride.id, ride.user.username]
+        db.run(statement, params, (err) => {
+            if(err) {
+                console.log(err)
+                reject(false)}
+            else {resolve(true)}
+        })
+    })
+}
 
 
 exports.reset = () => {

@@ -6,10 +6,12 @@ import RideForm from "./RideForm.jsx"
 import RequestForm from "./RequestForm";
 function Profile() {
     const [rideData, setRideData] = useState()
+    const [requestData, setRequestData] = useState()
+    const [randomVal, resetter] = useState()
     let user = JSON.parse(localStorage.getItem("curUser"))
     const getUserRides = useCallback(async () => {
         const url = "http://localhost:4000/rides/u?" + new URLSearchParams({ user: user.username }).toString()
-        console.log(url)
+
         const requestOptions = {
             method: "GET",
             mode: "cors",
@@ -21,10 +23,27 @@ function Profile() {
         setRideData(responseData.data)
 
     }, [])
+    const getUserRequests = useCallback(async () => {
+        const url = "http://localhost:4000/requests/u?" + new URLSearchParams({ user: user.username }).toString()
+
+        const requestOptions = {
+            method: "GET",
+            mode: "cors",
+        }
+
+        const response = await fetch(url, requestOptions)
+        const responseData = await response.json()
+
+        setRequestData(responseData.data)
+
+    }, [])
 
     useEffect(() => {
         getUserRides().catch(console.error)
     }, [getUserRides])
+    useEffect( () => {
+        getUserRequests().catch(console.error)
+    }, [getUserRequests])
 
     const deleteRide = (ind) => {
 
@@ -133,7 +152,7 @@ function Profile() {
 
                     </div>
                 </div>
-                <div className="riderequests">
+
 
                     <div className="ride--card">
                         <div className="ride header">
@@ -143,11 +162,12 @@ function Profile() {
                         {
                             rideData && rideData.map((item, i) => {
                                 return <div className="ride--item" key={i}>
-                                    Ride to {item.DESTINATION}
+                                    Ride to {item.DESTINATION}, {item.DEPARTUREDATE.slice(0, 10)}
                                     <div className="ride--buttons">
-                                        <RideForm  isEdit = {true}/>
+                                        <RideForm  isEdit = {true} ride={item} onChangeData={resetter}/>
 
-                                        <button className="Button red" style={{"marginLeft": "10px"}}>Delete</button>
+                                        <button className="Button red" style={{"marginLeft": "10px", 
+                                        "position" : "relative", "right": "10px"}}>Delete</button>
                                     </div>
 
                                 </div>
@@ -161,10 +181,22 @@ function Profile() {
                             <span style={{ "fontSize": "28px", "marginBottom": "10px" }}>My Ride Requests</span>
                             <RequestForm />
                         </div>
+                        {
+                            requestData && requestData.map((item, i) => {
+                                return <div className="request--item" key = {i}>
+                                    Request to {item.DESTINATION}
+                                    <div className="request--buttons">
+                                        <RequestForm isEdit={true}/>
+                                        <button className="Button red" style={{"marginLeft": "10px", 
+                                        "position" : "relative", "right": "10px"}}>Delete</button>
+                                    </div>
+                                    </div>
+                            })
+                        }
 
                     </div>
 
-                </div>
+
 
 
 

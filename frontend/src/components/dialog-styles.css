@@ -79,6 +79,8 @@ input {
 .Button.green {
   background-color: var(--green4);
   color: var(--green11);
+
+  /* width: 65px; */
 }
 .Button.green:hover {
   background-color: var(--green5);

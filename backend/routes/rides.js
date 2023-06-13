@@ -13,6 +13,15 @@ router.post ('/', async (req, res) => { //posts a new ride to the database
     }
 })
 
+router.put('/', async(req, res) => {
+    try {
+        await db_model.updateRide(req.body)
+        res.json({message: "success"})
+    }
+    catch {
+        res.json({message: "failure"})
+    }
+})
 
 router.get('/', (req, res, next) => { //gets all the rides in the database
     db_model.getTable("rides", (rows) => {

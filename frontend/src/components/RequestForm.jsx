@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import * as Yup from 'yup'
 import { useState } from "react"
 
-function RequestForm() {
+function RequestForm(props) {
     const formSchema = Yup.object().shape({
         splitgas: Yup.string()
         .required("Please select an option"),
@@ -40,13 +40,18 @@ function RequestForm() {
     }
     return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-        <Dialog.Trigger asChild>
-            <button className="Button violet">Add Request</button>
-        </Dialog.Trigger>
+        {
+                props.isEdit ? <Dialog.Trigger asChild>
+                    <button className="Button green">Edit Request</button>
+                </Dialog.Trigger> :
+                <Dialog.Trigger asChild>
+                    <button className="Button violet">Add Request</button>
+                </Dialog.Trigger>
+            }
         <Dialog.Portal>
             <Dialog.Overlay className="DialogOverlay">
                 <Dialog.Content className="DialogContent">
-                    <Dialog.Title className="DialogTitle">Add Ride Request</Dialog.Title>
+                    <Dialog.Title className="DialogTitle">{props.isEdit ? "Edit Request" : "Add Request"}</Dialog.Title>
                     <Dialog.Description className="DialogDescription">
                         Post a Ride Request
                     </Dialog.Description>

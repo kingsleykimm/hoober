@@ -41,6 +41,25 @@ function RideForm(props) {
         console.log(responseData)
         reset()
     }
+    const onUpdate = async(data) => {
+        setOpen(false)
+        const requestOptions = {
+            method: "PUT",
+            mode: "cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                ...data,
+                user: JSON.parse(localStorage.getItem("curUser")),
+                id: props.ride.id },
+                
+            ),
+            
+        }
+        const response = await fetch("http://localhost:4000/rides/", requestOptions)
+        const responseData = await response.json()
+        props.onChangeData()
+        reset()
+    }
     return (
 
         <Dialog.Root open = {open} onOpenChange={setOpen}>
@@ -59,7 +78,7 @@ function RideForm(props) {
                         <Dialog.Description className="DialogDescription">
                             Post a Ride Offer
                         </Dialog.Description>
-                        <form onSubmit = {handleSubmit(onSubmit)}> 
+                        <form onSubmit = {props.ride ? handleSubmit(onUpdate) : handleSubmit(onSubmit)}> 
                         <fieldset className="Fieldset">
                             <label className="Label">
                                 Number of passengers
@@ -68,6 +87,7 @@ function RideForm(props) {
                             type="number"
                             name="passengers"
                             placeholder="0"
+                            defaultValue={props.ride && props.ride.RIDERS}
                             {...register("passengers")} />
                         </fieldset>
                         <label className="Label errorLabel">{errors.passengers && "Please provide a number of passengers"}</label>
@@ -90,7 +110,7 @@ function RideForm(props) {
                             <input className="Input"
                             placeholder="Destination"
                             name = "destination"
-
+                            defaultValue = {props.ride && props.ride.DESTINATION}
                             {...register("destination")} 
                             ></input>
                         </fieldset>
@@ -99,6 +119,7 @@ function RideForm(props) {
                             <label className="Label" >Departure Date</label>
                             <input className="Input" type="date"
                             name="departureDate"
+                            defaultValue={props.ride && props.ride.DEPARTUREDATE}
                             {...register("departureDate")}
                             ></input>
                         </fieldset>
@@ -108,6 +129,7 @@ function RideForm(props) {
                             <input className="Input"
                             placeholder="Departure Location"
                             name="departureLocation"
+                            defaultValue={props.ride && props.ride.DEPARTURELOCATION}
                             {...register("departureLocation")} 
                             ></input>
                         </fieldset>
@@ -116,11 +138,12 @@ function RideForm(props) {
                             <label className="Label">Description (optional)</label>
                             <input className="Input"
                             name="description"
+                            defaultValue={props.ride && props.ride.DESCRIPTION}
                             {...register("description")}
                             ></input>
                         </fieldset>
                         <div style={{ display: 'flex', marginTop: 25, justifyContent: 'flex-end' }}>
-                            <input className="Button green" value="Post" type="submit" ></input>
+                            <input className="Button green" value={props.ride ? "Update" : "Post"} type="submit" ></input>
                         </div>
 
                         </form>
