@@ -76,10 +76,17 @@ input {
 .Button.violet:focus {
   box-shadow: 0 0 0 2px black;
 }
+.Button.violet.small {
+  font-size: 20px;
+  padding: 5px 10px;
+  max-width: 130px;
+}
 .Button.green {
   background-color: var(--green4);
   color: var(--green11);
-
+  width: auto;
+  font-size: 20px;
+  padding: 5px 10px;
   /* width: 65px; */
 }
 .Button.green:hover {
@@ -92,6 +99,8 @@ input {
 .Button.red {
   background-color: red;
   color: white;
+  padding: 5px 10px;
+  font-size: 20px;
 }
 .IconButton {
   font-family: inherit;

@@ -66,14 +66,14 @@ function Signupform(props) {
                     }
                 >Welcome!</h1>
                 <label className="form--label">Username</label>
-                <input
+                <input className="user--input" 
                     placeholder="Username"
                     name="username"
                     {...register("username")}                    
                 />
                 <div className="form--errors"> {errors.username?.message}</div>
                 <label className="form--label">Password</label>
-                <input
+                <input className="user--input" 
                     name="password"
                     type="password"
                     placeholder="Password"
@@ -81,14 +81,14 @@ function Signupform(props) {
                    ></input>
                 <div className="form--errors"> {errors.password?.message}</div>
                 <label className="form--label">Confirm Password</label>
-                <input style={{ 'marginBottom': "20px" }}
+                <input className="user--input" 
                     placeholder="Confirm Password"
                     name="confirmPassword"
                     type="password"
                     {...register("confirmPassword")}
                 ></input>
                 <div className="form--errors">{errors.confirmPassword?.message}</div>
-                <input value="Sign Up" type="submit"
+                <input className="user--input--buttons" value="Sign Up" type="submit" style={{"display": "flex"}}
                 ></input>
                 {userExists && <p className="form--label" style = {
                     {

@@ -58,7 +58,7 @@ function Loginform(props) {
                     }
                 >Welcome!</h1>
                 <label className="form--label">Username</label>
-                <input
+                <input className="user--input" 
                     placeholder="Username"
                     name="username"
                     {...register("username",  {required: true})}                    
@@ -70,7 +70,7 @@ function Loginform(props) {
                 }
                 
                 <label className="form--label" >Password</label>
-                <input
+                <input className="user--input" 
                     name="password"
                     type="password"
                     placeholder="Password"
@@ -87,14 +87,18 @@ function Loginform(props) {
                 {
                     errorMessage && <div className="form--errors">{errorMessage}</div>
                 }
-                <input value="Log In" type="submit" 
+                <input className="user--input--buttons" value="Log In" type="submit" 
                 ></input>
                 <p className="form--label">Don't have an account? 
                 <Link to="/Signupform"
                 style = {
                     {
                         "textDecoration" : "none",
-                        "marginLeft": "5px",
+                        "marginLeft": "15px",
+                        "backgroundColor": "white",
+                        "padding": "10px",
+                        "borderRadius": "6px",
+                        "fontSize" : "18px",
                     }
                 }
                 >

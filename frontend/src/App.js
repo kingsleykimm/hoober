@@ -1,5 +1,5 @@
 // import { useEffect, useState } from "react";
-import "./App.css"
+
 import "./components/dashboard.css"
 import Navbar  from "./components/Navbar.js"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -12,6 +12,7 @@ import Loginform from "./components/Loginform";
 import Signupform from "./components/SignUpForm";
 import './components/dialog-styles.css';
 import './components/tab-styles.css'
+import "./App.css"
 function App() {
   const [userRender, setUserRender] = useState(false)
   // const element = <Home />

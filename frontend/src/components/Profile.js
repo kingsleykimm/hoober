@@ -4,6 +4,7 @@ import DialogDemo from "./DialogDemo";
 import { Cross2Icon } from '@radix-ui/react-icons';
 import RideForm from "./RideForm.jsx"
 import RequestForm from "./RequestForm";
+import Passengers from "./Passengers";
 function Profile() {
     const [rideData, setRideData] = useState()
     const [requestData, setRequestData] = useState()
@@ -41,7 +42,7 @@ function Profile() {
     useEffect(() => {
         getUserRides().catch(console.error)
     }, [getUserRides])
-    useEffect( () => {
+    useEffect(() => {
         getUserRequests().catch(console.error)
     }, [getUserRequests])
 
@@ -154,47 +155,55 @@ function Profile() {
                 </div>
 
 
-                    <div className="ride--card">
-                        <div className="ride header">
-                            <span style={{ "fontSize": "28px", "marginBottom": "10px" }}>My Ride Offers</span>
-                            <RideForm />
-                        </div>
-                        {
-                            rideData && rideData.map((item, i) => {
-                                return <div className="ride--item" key={i}>
-                                    Ride to {item.DESTINATION}, {item.DEPARTUREDATE.slice(0, 10)}
-                                    <div className="ride--buttons">
-                                        <RideForm  isEdit = {true} ride={item} onChangeData={resetter}/>
-
-                                        <button className="Button red" style={{"marginLeft": "10px", 
-                                        "position" : "relative", "right": "10px"}}>Delete</button>
-                                    </div>
-
+                <div className="ride--card">
+                    <div className="ride header">
+                        <span style={{ "fontSize": "28px", "marginBottom": "10px" }}>My Ride Offers</span>
+                        <RideForm />
+                    </div>
+                    {
+                        rideData && rideData.map((item, i) => {
+                            return <div className="ride--item" key={i}>
+                                <div className="ride--info">
+                                    <p>Ride to {item.DESTINATION}, {item.DEPARTUREDATE.slice(0, 10)}</p>
+                                    <Passengers ride={item} />
                                 </div>
-                            })
-                        }
+
+                                <div className="ride--buttons">
+                                    <RideForm isEdit={true} ride={item} onChangeData={resetter} />
+
+                                    <button className="Button red" style={{
+                                        "marginLeft": "10px",
+                                        "position": "relative", "right": "10px"
+                                    }}>Delete</button>
+                                </div>
+
+                            </div>
+                        })
+                    }
+                </div>
+
+
+                <div className="request--card">
+                    <div className="request header">
+                        <span style={{ "fontSize": "28px", "marginBottom": "10px" }}>My Ride Requests</span>
+                        <RequestForm />
                     </div>
+                    {
+                        requestData && requestData.map((item, i) => {
+                            return <div className="request--item" key={i}>
+                                <p className="request--info">Request to {item.DESTINATION}</p>
+                                <div className="request--buttons">
+                                    <RequestForm isEdit={true} />
+                                    <button className="Button red" style={{
+                                        "marginLeft": "10px",
+                                        "position": "relative", "right": "10px"
+                                    }}>Delete</button>
+                                </div>
+                            </div>
+                        })
+                    }
 
-
-                    <div className="request--card">
-                        <div className="request header">
-                            <span style={{ "fontSize": "28px", "marginBottom": "10px" }}>My Ride Requests</span>
-                            <RequestForm />
-                        </div>
-                        {
-                            requestData && requestData.map((item, i) => {
-                                return <div className="request--item" key = {i}>
-                                    Request to {item.DESTINATION}
-                                    <div className="request--buttons">
-                                        <RequestForm isEdit={true}/>
-                                        <button className="Button red" style={{"marginLeft": "10px", 
-                                        "position" : "relative", "right": "10px"}}>Delete</button>
-                                    </div>
-                                    </div>
-                            })
-                        }
-
-                    </div>
+                </div>
 
 
 

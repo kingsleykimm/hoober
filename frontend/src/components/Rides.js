@@ -6,6 +6,8 @@ import { useState, useEffect, useCallback } from "react"
 function Rides() {
     const [data, setData] = useState()
     const [buttonText, setButtonText] = useState("")
+    const user = localStorage.getItem("curUser")
+
     const getRides = useCallback(async () => {
         const requestOptions = {
             method: "GET",
@@ -103,7 +105,8 @@ function Rides() {
             key: 'x',
             render: () => { //need to change text if the logged in user is this person's ride
                 return (
-                <button className="Button green" onClick = {joinRide} value={buttonText} type="submit">Join Ride</button>
+                    user ? <button className="Button green" onClick = {joinRide} value={buttonText} type="submit">Join Ride</button> :
+                    <div className="Button violet">Sign Up / Log In to join rides! </div>
                 )
             }
             
@@ -115,7 +118,9 @@ function Rides() {
         <div className="rides--page">
             <div className="rides--heading">
                 <h1>Rides</h1>
-                <RideForm />
+                {
+                    user ? <RideForm /> : <div className="Button violet">Sign Up / Log In to add rides! </div>
+                }
             </div>
             <div className="rides">
                 <Table columns={columns} dataSource={data}
