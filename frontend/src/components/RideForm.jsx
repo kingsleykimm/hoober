@@ -39,6 +39,7 @@ function RideForm(props) {
         const response = await fetch("http://localhost:4000/rides/", requestOptions)
         const responseData = await response.json()
         console.log(responseData)
+        props.onChangeData()
         reset()
     }
     const onUpdate = async(data) => {

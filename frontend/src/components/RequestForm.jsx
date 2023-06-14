@@ -36,7 +36,31 @@ function RequestForm(props) {
         const response = await fetch("http://localhost:4000/requests/", requestOptions)
         const responseData = await response.json()
         console.log(responseData)
+        props.onChangeData()
+        reset()
 
+    }
+    const onUpdate = async(data) => {
+        setOpen(false)
+
+        const requestOptions = {
+            method: "PUT",
+            mode: "cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                ...data,
+                user: JSON.parse(localStorage.getItem("curUser")),
+                id: props.request.id,
+            },
+            )
+        }
+        
+
+        const response = await fetch("http://localhost:4000/requests/", requestOptions)
+        const responseData = await response.json()
+        console.log(responseData)
+        props.onChangeData()
+        reset()
     }
     return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -55,7 +79,7 @@ function RequestForm(props) {
                     <Dialog.Description className="DialogDescription">
                         Post a Ride Request
                     </Dialog.Description>
-                    <form onSubmit = {handleSubmit(onSubmit)}>
+                    <form onSubmit = {props.request ? handleSubmit(onUpdate) : handleSubmit(onSubmit)}>
                     <fieldset className="Fieldset">
                             <label className="Label">
                                 Split Gas?
@@ -75,6 +99,7 @@ function RequestForm(props) {
                             <input className="Input"
                             placeholder="Destination"
                             name = "destination"
+                            defaultValue={props.request && props.request.DESTINATION}
 
                             {...register("destination")} 
                             ></input>
@@ -85,6 +110,7 @@ function RequestForm(props) {
                             <input className="Input" type="date"
                             name="departureDate"
                             {...register("departureDate")}
+                            defaultValue={props.request && props.request.DEPARTUREDATE}
                             ></input>
                         </fieldset>
                         <label className="Label errorLabel">{errors.departureDate && "Please provide a departure date"}</label>
@@ -93,11 +119,12 @@ function RequestForm(props) {
                             <label className="Label">Description (optional)</label>
                             <input className="Input"
                             name="description"
+                            defaultValue = {props.request && props.request.DESCRIPTION}
                             {...register("description")}
                             ></input>
                         </fieldset>
                         <div style={{ display: 'flex', marginTop: 25, justifyContent: 'flex-end' }}>
-                            <input className="Button green" value="Post" type="submit" ></input>
+                        <input className="Button green" value={props.request ? "Update" : "Post"} type="submit" ></input>
                         </div>
                     </form>
 

@@ -32,6 +32,16 @@ router.put('/', async(req, res) => {
     // }
 })
 
+router.put('/u', async(req, res) => {
+    try {
+
+        await db_model.deleteRide(req.body)
+        res.json({message: "Success"})
+    }
+    catch {
+        res.json({message : "Failure"})
+    }
+})
 router.get('/', (req, res, next) => { //gets all the rides in the database
     db_model.getTable("rides", (rows) => {
         res.json ({

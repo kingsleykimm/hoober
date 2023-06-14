@@ -46,16 +46,29 @@ function Profile() {
         getUserRequests().catch(console.error)
     }, [getUserRequests])
 
-    const deleteRide = (event, ind) => {
-
-        setRideData(
-            prevData => {
-                return (
-                    prevData.filter((item, index) => index != ind)
-                )
-            }
-
-        )
+    const deleteRide = async (event, ind) => {
+        const requestOptions = {
+            method: "PUT",
+            mode: "cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({index: ind})
+        }
+        const response = await fetch("http://localhost:4000/rides/u", requestOptions)
+        const responseData = await response.json()
+        console.log(responseData)
+        getUserRides()
+    }
+    const deleteRequest = async(event, ind) => {
+        const requestOptions = {
+            method: "PUT",
+            mode: "cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({index: ind})
+        }
+        const response = await fetch("http://localhost:4000/requests/u", requestOptions)
+        const responseData = await response.json()
+        console.log(responseData)
+        getUserRequests()
     }
     console.log(rideData)
     return (
@@ -166,7 +179,7 @@ function Profile() {
                 <div className="ride--card">
                     <div className="ride header">
                         <span style={{ "fontSize": "28px", "marginBottom": "10px" }}>My Ride Offers</span>
-                        <RideForm />
+                        <RideForm onChangeData = {getUserRides}/>
                     </div>
                     {
                         rideData && rideData.map((item, i) => {
@@ -179,7 +192,7 @@ function Profile() {
                                 <div className="ride--buttons">
                                     <RideForm isEdit={true} ride={item} index = {i} onChangeData={getUserRides} />
 
-                                    <button className="Button red" onClick = {(event) => deleteRide(event, i)} style={{
+                                    <button className="Button red" onClick = {(event) => deleteRide(event, item.id)} style={{
                                         "marginLeft": "10px",
                                         "position": "relative", "right": "10px"
                                     }}>Delete</button>
@@ -194,15 +207,15 @@ function Profile() {
                 <div className="request--card">
                     <div className="request header">
                         <span style={{ "fontSize": "28px", "marginBottom": "10px" }}>My Ride Requests</span>
-                        <RequestForm />
+                        <RequestForm onChangeData = {getUserRequests} />
                     </div>
                     {
                         requestData && requestData.map((item, i) => {
                             return <div className="request--item" key={i}>
-                                <p className="request--info">Request to {item.DESTINATION}</p>
+                                <p className="request--info">Request to {item.DESTINATION}, {item.DEPARTUREDATE.slice(0, 10)}</p>
                                 <div className="request--buttons">
-                                    <RequestForm isEdit={true} />
-                                    <button className="Button red" style={{
+                                    <RequestForm isEdit={true} request={item} index={i} onChangeData={getUserRequests}/>
+                                    <button className="Button red" onClick = {(event) => deleteRequest(event, item.id)} style={{
                                         "marginLeft": "10px",
                                         "position": "relative", "right": "10px"
                                     }}>Delete</button>

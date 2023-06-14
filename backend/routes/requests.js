@@ -13,7 +13,16 @@ router.post ('/', async (req, res) => { //posts a new ride to the database
     }
 })
 
-
+router.put('/', async(req, res) => {
+    db_model.updateRequest(req.body).then( (value) => {
+        if(value) {
+            res.json({message: "success"})
+        }
+        else {
+            res.json({message: "failure"})
+        }
+    })
+})
 router.get('/', (req, res, next) => { //gets all the rides in the database
     db_model.getTable("requests", (rows) => {
         res.json ({
@@ -31,5 +40,14 @@ router.get('/u', async (req, res, ) => {
     })
 
 })
+router.put('/u', async(req, res) => {
+    try {
 
+        await db_model.deleteRequest(req.body)
+        res.json({message: "Success"})
+    }
+    catch {
+        res.json({message : "Failure"})
+    }
+})
 module.exports = router
