@@ -56,8 +56,19 @@ function RideForm(props) {
             
         }
         const response = await fetch("http://localhost:4000/rides/", requestOptions)
-        const responseData = await response.json()
         props.onChangeData()
+        // props.onChangeData (prevData => {
+        //     return prevData.map((item, index) => {
+        //         if(index == props.index) {
+        //             for (const key in item) {
+
+        //             }
+        //         }
+        //         else {
+        //             return item
+        //         }
+        //     })
+        // })
         reset()
     }
     return (

@@ -46,20 +46,25 @@ function Profile() {
         getUserRequests().catch(console.error)
     }, [getUserRequests])
 
-    const deleteRide = (ind) => {
+    const deleteRide = (event, ind) => {
 
-        setRideData((prevData) => {
-            prevData.filter((item, index) => index != ind)
-        })
+        setRideData(
+            prevData => {
+                return (
+                    prevData.filter((item, index) => index != ind)
+                )
+            }
 
+        )
     }
-
+    console.log(rideData)
     return (
         <div className="dashboard">
-            <h1 className="profile--title">
+            {/* <h1 className="profile--title">
                 Dashboard
-            </h1>
+            </h1> */}
             <div className="profile--info">
+                <div className="user--card">
                 <div className="card">
                     <div className="card-border-top"></div>
                     <div className="img">
@@ -153,7 +158,10 @@ function Profile() {
 
                     </div>
                 </div>
+                <div className="notifications--card">
 
+                </div>
+                </div>
 
                 <div className="ride--card">
                     <div className="ride header">
@@ -169,9 +177,9 @@ function Profile() {
                                 </div>
 
                                 <div className="ride--buttons">
-                                    <RideForm isEdit={true} ride={item} onChangeData={resetter} />
+                                    <RideForm isEdit={true} ride={item} index = {i} onChangeData={getUserRides} />
 
-                                    <button className="Button red" style={{
+                                    <button className="Button red" onClick = {(event) => deleteRide(event, i)} style={{
                                         "marginLeft": "10px",
                                         "position": "relative", "right": "10px"
                                     }}>Delete</button>

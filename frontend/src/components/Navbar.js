@@ -18,7 +18,7 @@ function Navbar(props) {
         <nav className="header">
             <div className="home-button-style">
                 <img src="https://img.icons8.com/dotty/80/000000/circled-h.png"  color />
-                <NavLink style={{"fontSize": "45px" }} to="/Home">
+                <NavLink style={{"fontSize": "70px" }} to="/Home">
                     Hoober
                 </NavLink>
 
