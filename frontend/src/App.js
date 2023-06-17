@@ -25,7 +25,7 @@ function App() {
     }
     const response = await fetch("https://api.render.com/deploy/srv-chtclr7dvk4oliqvq2q0?key=kSqUNhHHipc", requestOptions)
     const responseData = await response.json()
-  })
+  }, [])
 
   
   useEffect(() => {
