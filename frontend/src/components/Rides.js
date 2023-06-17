@@ -5,7 +5,8 @@ import { Fade } from "react-awesome-reveal";
 import { useState, useEffect, useCallback } from "react"
 function Rides() {
     const [data, setData] = useState()
-    const [buttonText, setButtonText] = useState("")
+
+    const [isClicked, setIsClicked] = useState(false)
     const user = localStorage.getItem("curUser")
 
     const getRides = useCallback(async () => {
@@ -40,7 +41,7 @@ function Rides() {
       }
       
       async function joinRide () {
-        setButtonText("Ride Joined")
+        setIsClicked(true)
         const requestOptions = {
             method: "POST",
             mode: "cors",
@@ -105,7 +106,7 @@ function Rides() {
             key: 'x',
             render: () => { //need to change text if the logged in user is this person's ride
                 return (
-                    user ? <button className="Button green" onClick = {joinRide} value={buttonText} type="submit">Join Ride</button> :
+                    user ? <button className="Button green" onClick = {joinRide}>{isClicked ? 'Joined!' : 'Join Ride'}</button> :
                     <div className="Button violet">Sign Up / Log In to join rides! </div>
                 )
             }
@@ -115,7 +116,7 @@ function Rides() {
     ]
 
     return (
-        <Fade direction="up" duration={1200}>
+
         <div className="rides--page">
             <div className="rides--heading">
                 <h1>Rides</h1>
@@ -128,8 +129,9 @@ function Rides() {
                 theme={{
                     algorithm: theme.darkAlgorithm,
                     token : {
-                        fontSize: '18px',
+                        fontSize: '22px',
                         lineWidth: '3',
+                        sizeUnit: '8'
                     }
                 }}>
                 <Table columns={columns} dataSource={data}
@@ -146,12 +148,14 @@ function Rides() {
                         rowExpandable: (record) => record["DESCRIPTION"]
                     }
                     }
+                    pagination={{'defaultPageSize' : '6', 'defaultCurrent': '1'}}
+                    
                  />
                  </ConfigProvider>
             </div>
 
         </div>
-        </Fade>
+
     )
 }
 export default Rides;

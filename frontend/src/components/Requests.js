@@ -96,7 +96,7 @@ function Requests() {
         }
     ]
     return (
-        <Fade direction="up" duration={1200}>
+
         <div className='requests--page'>
             <div className='requests--heading'>
                 <h1>Requests</h1>
@@ -109,8 +109,9 @@ function Requests() {
                 theme={{
                     algorithm: theme.darkAlgorithm,
                     token : {
-                        fontSize: '18px',
+                        fontSize: '22px',
                         lineWidth: '3',
+                        sizeUnit: '8'
                     }
                 }}>
                 <Table columns={columns} dataSource={data}
@@ -126,12 +127,13 @@ function Requests() {
                     ),
                     rowExpandable: (record) => record["DESCRIPTION"]
                 }
-                }>
+                }
+                pagination={{'defaultPageSize' : '6', 'defaultCurrent': '1'}}>
                 </Table>
                 </ConfigProvider>
             </div>
         </div>
-        </Fade>
+
     )
 }
 export default Requests;
