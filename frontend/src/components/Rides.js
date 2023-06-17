@@ -14,7 +14,7 @@ function Rides() {
             method: "GET",
             mode: "cors"
         }
-        const response = await fetch("http://localhost:4000/rides", requestOptions)
+        const response = await fetch("https://hoober-server.onrender.com/rides", requestOptions)
         const responseData = await response.json()
 
         setData(responseData.data.map((item) => {

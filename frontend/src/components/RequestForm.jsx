@@ -33,7 +33,7 @@ function RequestForm(props) {
         }
         
 
-        const response = await fetch("http://localhost:4000/requests/", requestOptions)
+        const response = await fetch("https://hoober-server.onrender.com/requests/", requestOptions)
         const responseData = await response.json()
         console.log(responseData)
         props.onChangeData()
@@ -56,7 +56,7 @@ function RequestForm(props) {
         }
         
 
-        const response = await fetch("http://localhost:4000/requests/", requestOptions)
+        const response = await fetch("https://hoober-server.onrender.com/requests/", requestOptions)
         const responseData = await response.json()
         console.log(responseData)
         props.onChangeData()

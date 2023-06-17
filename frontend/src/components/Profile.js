@@ -12,7 +12,7 @@ function Profile() {
     const [randomVal, resetter] = useState()
     let user = JSON.parse(localStorage.getItem("curUser"))
     const getUserRides = useCallback(async () => {
-        const url = "http://localhost:4000/rides/u?" + new URLSearchParams({ user: user.username }).toString()
+        const url = "https://hoober-server.onrender.com/rides/u?" + new URLSearchParams({ user: user.username }).toString()
 
         const requestOptions = {
             method: "GET",
@@ -26,7 +26,7 @@ function Profile() {
 
     }, [])
     const getUserRequests = useCallback(async () => {
-        const url = "http://localhost:4000/requests/u?" + new URLSearchParams({ user: user.username }).toString()
+        const url = "https://hoober-server.onrender.com/requests/u?" + new URLSearchParams({ user: user.username }).toString()
 
         const requestOptions = {
             method: "GET",
@@ -54,7 +54,7 @@ function Profile() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({index: ind})
         }
-        const response = await fetch("http://localhost:4000/rides/u", requestOptions)
+        const response = await fetch("https://hoober-server.onrender.com/rides/u", requestOptions)
         const responseData = await response.json()
         console.log(responseData)
         getUserRides()
@@ -66,7 +66,7 @@ function Profile() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({index: ind})
         }
-        const response = await fetch("http://localhost:4000/requests/u", requestOptions)
+        const response = await fetch("https://hoober-server.onrender.com/requests/u", requestOptions)
         const responseData = await response.json()
         console.log(responseData)
         getUserRequests()

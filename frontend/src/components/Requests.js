@@ -12,7 +12,7 @@ function Requests() {
             method: "GET",
             mode: "cors"
         }
-        const response = await fetch("http://localhost:4000/requests", requestOptions)
+        const response = await fetch("https://hoober-server.onrender.com/requests", requestOptions)
         const responseData = await response.json()
 
         setData(responseData.data.map((item) => {

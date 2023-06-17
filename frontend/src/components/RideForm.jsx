@@ -36,7 +36,7 @@ function RideForm(props) {
         }
         
         console.log(requestOptions.body)
-        const response = await fetch("http://localhost:4000/rides/", requestOptions)
+        const response = await fetch("https://hoober-server.onrender.com/rides/", requestOptions)
         const responseData = await response.json()
         console.log(responseData)
         props.onChangeData()
@@ -56,7 +56,7 @@ function RideForm(props) {
             ),
             
         }
-        const response = await fetch("http://localhost:4000/rides/", requestOptions)
+        const response = await fetch("https://hoober-server.onrender.com/rides/", requestOptions)
         props.onChangeData()
         // props.onChangeData (prevData => {
         //     return prevData.map((item, index) => {
