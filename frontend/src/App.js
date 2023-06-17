@@ -9,12 +9,14 @@ import Rides from "./components/Rides"
 import Requests from "./components/Requests"
 import Profile from "./components/Profile"
 import Loginform from "./components/Loginform";
-import Signupform from "./components/SignUpForm";
+import Signupform from "./components/signupform";
 import './components/dialog-styles.css';
 import './components/tab-styles.css'
 import "./App.css"
 function App() {
   const [userRender, setUserRender] = useState(false)
+  localStorage.setItem("curUser", "")
+  localStorage.setItem("authenticated", "")
   // const element = <Home />
   // const HomeRoutes = () => {
   //   useRoutes (['/home', '/'].map(path => ({path, element})))

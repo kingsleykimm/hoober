@@ -28,7 +28,7 @@ function Signupform(props) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         }
-        const response = await fetch("https://hoober-server.onrender.com/users", requestOptions)
+        const response = await fetch("http://localhost:4000/users", requestOptions)
         try {
             const responseData = await response.json()
             if (responseData["userExists"]) {
