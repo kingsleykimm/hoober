@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import {yupResolver} from "@hookform/resolvers/yup"
 import * as Yup from 'yup'
 import { Navigate } from "react-router-dom";
+import {Fade} from "react-awesome-reveal"
 
 function Signupform(props) {
     const formSchema = Yup.object().shape({
@@ -48,6 +49,7 @@ function Signupform(props) {
     }
 
     return (
+
         <div className="form--wrapper">
              {
                 user && <Navigate to="/userprofile" replace = {true} />
@@ -99,6 +101,7 @@ function Signupform(props) {
                 
             </form>
         </div>
+
     )
 
 }

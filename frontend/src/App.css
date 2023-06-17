@@ -2,15 +2,23 @@
 
 
 body {
-  background: #00111c;
-  height: 100vh;
-  width: 100vw
+  background: black;
+  /* height: auto; */
+  width: 100vw;
+  /* background-image: url(https://wallpaperaccess.com/full/1811402.jpg); */
+  background-repeat: repeat-y;
+  font-family: 'Inter', sans-serif;
 }
 .landing {
   display: flex;
   flex-direction: column;
 }
-
+.footer {
+  color: white;
+  font-size: 16px;
+  margin: 30px;
+  text-align: center;
+}
 .header {
   display: flex;
   flex-direction: row;
@@ -49,36 +57,72 @@ body {
 }
 
 .landing--title {
-  color: #F4EEE0;
+  color: #00111c;
   font-size: 85px;
 
 }
 .landing--container {
-  height: 70%;
+
+  width: 35%;
   display: flex;
-  margin: 40px auto;
-  padding: 150px 0;
+  margin: 240px 150px;
+  /* padding: 150px 0; */
   flex-direction : column;
   align-items: center;
-  justify-content: center;
+  border-radius: 12px;
+
+  background-color: #F4EEE0;
+  
 
 }
 
 .about--section {
   color: #F4EEE0;
-
-  padding: 20px;
+  margin: 100px 10px;
+  padding: 20px 60px;
   height: 100%;
+  font-size: 24px;
+  font-weight: 500;
 
 }
 .about--description {
+
   padding: 20px 60px;
-  padding-right : 200px;
+  width: 50%;
+
   font-size: 1.5rem;
   line-height: 2rem;
   color: #F4EEE0
 }
+.instructions {
+  color: #F4EEE0;
+  padding: 20px 60px;
+  font-size: 24px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 125px;
+  margin-bottom: 100px;
 
+}
+.instructions h1 {
+  align-self: center;
+  margin: 50px 0;
+  text-decoration: underline;
+}
+.instructions--components {
+  display: flex;
+  justify-content: space-around;
+}
+.instructions--components h2 {
+  font-size: 40px;
+  width: 30%;
+  text-align: center;
+}
+.instructions--components img {
+  width: 450px;
+  height: auto;
+}
 .form--wrapper {
 
   height: auto;

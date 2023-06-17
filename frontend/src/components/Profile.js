@@ -5,6 +5,7 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import RideForm from "./RideForm.jsx"
 import RequestForm from "./RequestForm";
 import Passengers from "./Passengers";
+import { Fade } from "react-awesome-reveal";
 function Profile() {
     const [rideData, setRideData] = useState()
     const [requestData, setRequestData] = useState()
@@ -72,6 +73,7 @@ function Profile() {
     }
     console.log(rideData)
     return (
+        <Fade direction="up" duration='1500'>
         <div className="dashboard">
             {/* <h1 className="profile--title">
                 Dashboard
@@ -235,6 +237,7 @@ function Profile() {
             </div>
 
         </div>
+        </Fade>
 
     )
 }

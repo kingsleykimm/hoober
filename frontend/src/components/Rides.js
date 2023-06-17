@@ -1,7 +1,7 @@
 
 import RideForm from "./RideForm";
-import { Space, Table, Tag } from 'antd';
-
+import { Space, Table, ConfigProvider, theme} from 'antd';
+import { Fade } from "react-awesome-reveal";
 import { useState, useEffect, useCallback } from "react"
 function Rides() {
     const [data, setData] = useState()
@@ -115,14 +115,23 @@ function Rides() {
     ]
 
     return (
+        <Fade direction="up" duration={1200}>
         <div className="rides--page">
             <div className="rides--heading">
                 <h1>Rides</h1>
                 {
-                    user ? <RideForm /> : <div className="Button violet">Sign Up / Log In to add rides! </div>
+                    user ? <RideForm onChangeData={getRides}/> : <div className="Button violet">Sign Up / Log In to add rides! </div>
                 }
             </div>
             <div className="rides">
+                <ConfigProvider
+                theme={{
+                    algorithm: theme.darkAlgorithm,
+                    token : {
+                        fontSize: '18px',
+                        lineWidth: '3',
+                    }
+                }}>
                 <Table columns={columns} dataSource={data}
                     expandable={{
                         expandedRowRender: (record) => (
@@ -138,9 +147,11 @@ function Rides() {
                     }
                     }
                  />
+                 </ConfigProvider>
             </div>
 
         </div>
+        </Fade>
     )
 }
 export default Rides;

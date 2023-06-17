@@ -1,11 +1,12 @@
 
 import RequestForm from './RequestForm';
-import { Space, Table, Tag } from 'antd';
-
+import { Space, Table, ConfigProvider, theme } from 'antd';
+import { Fade } from 'react-awesome-reveal';
 import { useState, useEffect, useCallback } from "react"
 function Requests() {
     const [data, setData] = useState()
     const [buttonText, setButtonText] = useState("")
+    const user = localStorage.getItem("curUser")
     const getRequests = useCallback(async () => {
         const requestOptions = {
             method: "GET",
@@ -86,7 +87,8 @@ function Requests() {
             key: 'x',
             render: () => { //need to change text if the logged in user is this person's ride
                 return (
-                <button className="Button green" onClick = {joinRequest} value={buttonText} type="submit">Take Request</button>
+                    user ? <button className="Button green" onClick = {joinRequest} value={buttonText} type="submit">Take Request</button> :
+                <div className="Button violet">Sign Up / Log In to add Requests! </div>
                 )
             }
             
@@ -94,12 +96,23 @@ function Requests() {
         }
     ]
     return (
+        <Fade direction="up" duration={1200}>
         <div className='requests--page'>
             <div className='requests--heading'>
                 <h1>Requests</h1>
-                <RequestForm />
+                {
+                    user ? <RequestForm onChangeData={getRequests}/> : <div className="Button violet">Sign Up / Log In to add Requests! </div>
+                }
             </div>
             <div className='requests'>
+            <ConfigProvider
+                theme={{
+                    algorithm: theme.darkAlgorithm,
+                    token : {
+                        fontSize: '18px',
+                        lineWidth: '3',
+                    }
+                }}>
                 <Table columns={columns} dataSource={data}
                 expandable={{
                     expandedRowRender: (record) => (
@@ -115,8 +128,10 @@ function Requests() {
                 }
                 }>
                 </Table>
+                </ConfigProvider>
             </div>
         </div>
+        </Fade>
     )
 }
 export default Requests;
