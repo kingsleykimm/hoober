@@ -3,7 +3,7 @@
 import "./components/dashboard.css"
 import Navbar  from "./components/Navbar.js"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Home from "./components/Home";
 import Rides from "./components/Rides"
 import Requests from "./components/Requests"
@@ -18,6 +18,19 @@ function App() {
   // const element = <Home />
   // const HomeRoutes = () => {
   //   useRoutes (['/home', '/'].map(path => ({path, element})))
+  const startServer = useCallback( async () => {
+      const requestOptions = {
+        method: "GET",
+        mode: "cors"
+    }
+    const response = await fetch("https://api.render.com/deploy/srv-chtclr7dvk4oliqvq2q0?key=kSqUNhHHipc", requestOptions)
+    const responseData = await response.json()
+  })
+
+  
+  useEffect(() => {
+    startServer().catch(console.error)
+}, [startServer])
 
   return (
     
