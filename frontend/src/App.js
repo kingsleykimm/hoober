@@ -9,7 +9,7 @@ import Rides from "./components/Rides"
 import Requests from "./components/Requests"
 import Profile from "./components/Profile"
 import Loginform from "./components/Loginform";
-import Signupform from "./components/signupform";
+import Signupform from "./components/Signupform";
 import './components/dialog-styles.css';
 import './components/tab-styles.css'
 import "./App.css"
