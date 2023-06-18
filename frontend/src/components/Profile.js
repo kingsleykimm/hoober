@@ -10,6 +10,7 @@ function Profile() {
     const [rideData, setRideData] = useState()
     const [requestData, setRequestData] = useState()
     const [randomVal, resetter] = useState()
+    console.log(localStorage.getItem("curUser"))
     let user = JSON.parse(localStorage.getItem("curUser"))
     const getUserRides = useCallback(async () => {
         const url = "https://hoober-server.onrender.com/rides/u?" + new URLSearchParams({ user: user.username }).toString()

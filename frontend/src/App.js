@@ -15,8 +15,8 @@ import './components/tab-styles.css'
 import "./App.css"
 function App() {
   const [userRender, setUserRender] = useState(false)
-  localStorage.setItem("curUser", "")
-  localStorage.setItem("authenticated", "")
+  // localStorage.setItem("curUser", "")
+  // localStorage.setItem("authenticated", "")
   // const element = <Home />
   // const HomeRoutes = () => {
   //   useRoutes (['/home', '/'].map(path => ({path, element})))
