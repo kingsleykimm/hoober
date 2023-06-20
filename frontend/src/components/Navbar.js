@@ -24,7 +24,7 @@ function Navbar(props) {
 
             </div>
             {
-                auth.length !== 0 ?
+                auth ?
                     <div className="header--links">
                         <NavLink to="/Rides">
                             Rides
