@@ -40,7 +40,7 @@ function Loginform(props) {
     }
   };
   return (
-    <Fade direction="up" duration="1200">
+    // <Fade direction="up" duration="1200">
       <div className="form--wrapper">
         {user && <Navigate to="/userprofile" replace={true} />}
         <form
@@ -104,7 +104,7 @@ function Loginform(props) {
           </p>
         </form>
       </div>
-    </Fade>
+    // </Fade>
   );
 }
 
