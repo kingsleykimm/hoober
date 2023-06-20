@@ -3,14 +3,14 @@ import { NavLink } from "react-router-dom";
 function Home() {
   return (
     <>
-      <Fade direction="up" duration="1200">
+
         <div className="landing--container">
           <h1 className="landing--title">Hoober</h1>
-          <h3 style={{ fontSize: "30px" }}>
+          <h3 style={{ fontSize: "30px", textAlign: "center" }}>
             <em>Find UVA rides anywhere and everywhere</em>
           </h3>
         </div>
-      </Fade>
+
       <Fade duration={1500} fraction={0}>
         <div className="about--section">
           <h1>What is Hoober?</h1>

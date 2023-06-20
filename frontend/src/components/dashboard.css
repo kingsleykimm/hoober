@@ -26,9 +26,10 @@
 
 .profile--info {
     display: flex;
-    /* justify-content: flex-start; */
+    justify-content: space-between;
+    gap: 20px;
     /* align-items: flex-start; */
-    gap: 75px;
+
 }
 
 .riderequests {

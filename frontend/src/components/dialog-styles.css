@@ -86,8 +86,9 @@ input {
   color: var(--green11);
   width: auto;
   font-size: 20px;
-  padding: 5px 10px;
+  padding: 5px 20px;
   width: 65px;
+  text-align: center;
 }
 .Button.green:hover {
   background-color: var(--green5);

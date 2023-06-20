@@ -129,9 +129,9 @@ function Rides() {
                 theme={{
                     algorithm: theme.darkAlgorithm,
                     token : {
-                        fontSize: '22px',
+                        fontSize: '20px',
                         lineWidth: '3',
-                        sizeUnit: '8'
+                        sizeUnit: '5'
                     }
                 }}>
                 <Table columns={columns} dataSource={data}

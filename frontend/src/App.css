@@ -66,8 +66,10 @@ body {
   width: 35%;
   display: flex;
   margin: 240px 150px;
+  padding: 30px;
   /* padding: 150px 0; */
   flex-direction : column;
+  /* justify-content: center; */
   align-items: center;
   border-radius: 12px;
 
