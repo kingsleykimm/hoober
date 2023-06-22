@@ -23,10 +23,10 @@ function App() {
   const startServer = useCallback( async () => {
       const requestOptions = {
         method: "GET",
-        mode: "cors"
+        // mode: "cors"
     }
     const response = await fetch("https://api.render.com/deploy/srv-chtclr7dvk4oliqvq2q0?key=kSqUNhHHipc", requestOptions)
-    const responseData = await response.json()
+
   }, [])
 
   
