@@ -1,8 +1,8 @@
 
 import RideForm from "./RideForm";
 import { Space, Table, ConfigProvider, theme} from 'antd';
-import { Fade } from "react-awesome-reveal";
 import { useState, useEffect, useCallback } from "react"
+import Maps  from "./Maps";
 function Rides() {
     const [data, setData] = useState()
 
@@ -109,9 +109,18 @@ function Rides() {
                     user ? <button className="Button green" onClick = {joinRide}>{isClicked ? 'Joined!' : 'Join Ride'}</button> :
                     <div className="Button violet">Sign Up / Log In to join rides! </div>
                 )
+            }   
+        },
+        {
+            title: 'Map Details',
+
+            render: () => {
+                return (
+                    <Maps>
+
+                    </Maps>
+                )
             }
-            
-            
         }
     ]
 
