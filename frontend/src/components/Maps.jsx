@@ -16,13 +16,13 @@ function Maps(props) {
 
     
     const request = {
-        query: "Lark on Main",
+        query: props.location,
         fields: ['name', 'geometry', 'place_id'],
         locationBias: {radius: 4000, center: {...defaultProps.defaultCenter}}
     }
 
     service.findPlaceFromQuery(request, (results, status) => {
-        if (status === window.google.maps.places.PlacesServiceStatus.OK && results) {
+        if (status === window.google.maps.places.PlacesServiceStatus.OK && results && props.location !== "N/A" && props.location !== "NOVA") {
             for(let i = 0; i < results.length; i++)
             {
                 if(results[i].place_id) {
@@ -35,15 +35,27 @@ function Maps(props) {
             }
             map.setCenter(results[0].geometry.location);
         }
+        else {
+            createMarker(defaultProps.defaultCenter, map, null, true)
+        }
     })
   }
-  function createMarker(place, map, place_id = null)
+  function createMarker(place, map, place_id = null, noLocation = false)
   {
+
     if (!place.geometry || !place.geometry.location) return;
     const marker = new window.google.maps.Marker({
         map,
         position: place.geometry.location,
       });
+    if (noLocation) {
+        infowindow.setContent("No address near UVA found for Departure Location!")
+        infowindow.open({
+            anchor: marker,
+            map
+        })
+        return
+    }
     if (place_id) {
         const req = {
             placeId: place_id,
@@ -51,7 +63,6 @@ function Maps(props) {
         }
         service.getDetails(req, (result, status)  => {
             if (status === window.google.maps.places.PlacesServiceStatus.OK && result) {
-                console.log(result)
                 window.google.maps.event.addListener(marker, "click", () => {
                     let address = place.name + ": ";
                     for (let i = 1; i < result.address_components.length; i++)
@@ -72,7 +83,7 @@ function Maps(props) {
   
   }
   return (
-    <Dialog.Root style={{ height: "100vh", width: "100%", zIndex: 10 }}>
+    <Dialog.Root style={{ height: "100vh", width: "100%" }}>
       <Dialog.Trigger asChild>
         <button className="Button violet">Open Map</button>
       </Dialog.Trigger>
@@ -83,7 +94,7 @@ function Maps(props) {
             Map of Departure Location
           </Dialog.Title>
           <Dialog.Description className="DialogDescription">
-            Click on the marker to see information about the location
+            Click on the marker to see information about the location -- if no marker is shown, location is either not near UVA or could not be found by Google Maps.
           </Dialog.Description>
           <div style={{ height: "50vh", width: "100%" }}>
             <GoogleMapReact

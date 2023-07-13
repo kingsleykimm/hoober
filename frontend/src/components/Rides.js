@@ -114,9 +114,9 @@ function Rides() {
         {
             title: 'Map Details',
 
-            render: () => {
+            render: (text, record) => {
                 return (
-                    <Maps>
+                    <Maps location={record.DEPARTURELOCATION}>
 
                     </Maps>
                 )
