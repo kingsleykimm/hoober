@@ -20,19 +20,7 @@ function App() {
   // const element = <Home />
   // const HomeRoutes = () => {
   //   useRoutes (['/home', '/'].map(path => ({path, element})))
-  const startServer = useCallback( async () => {
-      const requestOptions = {
-        method: "GET",
-        // mode: "cors"
-    }
-    const response = await fetch("https://api.render.com/deploy/srv-chtclr7dvk4oliqvq2q0?key=kSqUNhHHipc", requestOptions)
-
-  }, [])
-
   
-  useEffect(() => {
-    startServer().catch(console.error)
-}, [startServer])
 
   return (
     
